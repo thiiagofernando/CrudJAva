@@ -18,7 +18,7 @@ public class CadProdutos extends javax.swing.JInternalFrame {
         ListaProduto();
     }
     
-        public void ExcluirProduto(){
+    public void ExcluirProduto(){
         
         String sql = "delete from produto where idProduto=?";
         

@@ -169,9 +169,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemResponsaveisActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+
+        try {
         Movimentacao form = new Movimentacao();
         form.setVisible(true);
         PanelPrincipal.add(form);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void menuLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoffActionPerformed

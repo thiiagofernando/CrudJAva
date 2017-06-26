@@ -130,9 +130,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemSairActionPerformed
 
     private void itemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProdutosActionPerformed
+
+        try {
+            
         CadProdutos form =new CadProdutos();
         form.setVisible(true);
         PanelPrincipal.add(form);
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_itemProdutosActionPerformed
 
     private void ItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemUsuariosActionPerformed
@@ -147,9 +155,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ItemUsuariosActionPerformed
 
     private void itemResponsaveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemResponsaveisActionPerformed
+
+        try {
+            
         Responsaveis form = new Responsaveis();
         form.setVisible(true);
         PanelPrincipal.add(form);
+        
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_itemResponsaveisActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed

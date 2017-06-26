@@ -18,6 +18,23 @@ public class CadUsuarios extends javax.swing.JInternalFrame {
         ListaUsuario();
     }
 
+    public void ExcluirUsuario(){
+        
+        String sql = "delete from usuario where Idusuario=?";
+        
+        try {
+            
+            pst = conecta.prepareStatement(sql);
+            pst.setInt(1, Integer.parseInt(txtCodigo.getText()));
+            pst.execute();
+            ListaUsuario(); 
+            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!!");
+            
+        } catch (SQLException error) {
+            
+            JOptionPane.showMessageDialog(null, error);
+        }
+    }
     public void SalvarEdicaoUsuario(){
             String sql = "update usuario set login=?, senha=? where IdUsuario=? ";
         
@@ -83,7 +100,7 @@ public class CadUsuarios extends javax.swing.JInternalFrame {
     }
 
     public void ListaUsuario() {
-        String sql = "select * from usuario";
+        String sql = "select * from usuario order by IdUsuario asc";
         try {
 
             pst = conecta.prepareStatement(sql);
@@ -189,6 +206,11 @@ public class CadUsuarios extends javax.swing.JInternalFrame {
         });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnLimpar.setText("Limpar");
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -274,9 +296,7 @@ public class CadUsuarios extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(8, 8, 8)
-                            .addComponent(jLabel2))
+                        .addComponent(jLabel2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
@@ -313,6 +333,7 @@ public class CadUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_TblUsuarioMouseClicked
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        LimparTela();
         NovoUsuario();
     }//GEN-LAST:event_btnNovoActionPerformed
 
@@ -331,6 +352,10 @@ public class CadUsuarios extends javax.swing.JInternalFrame {
         SalvarEdicaoUsuario();
         btnSalvaEdicao.setEnabled(false);
     }//GEN-LAST:event_btnSalvaEdicaoActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        ExcluirUsuario();
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TblUsuario;
